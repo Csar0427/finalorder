@@ -1,7 +1,7 @@
 {
   "homepage": "https://csar0427.github.io/finalorder/",
   "name": "my-app",
-  "version": "0.1.0", 
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
