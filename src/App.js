@@ -36,18 +36,16 @@ const App = () => {
     const updatedBasketItems = [...basketItems];
     const updatedItem = { ...updatedBasketItems[index] };
     
-    // Check if the quantity to remove is greater than the current quantity
     if (quantityToRemove >= updatedItem.quantity) {
-      // Set quantity to 0
       updatedItem.quantity = 0;
     } else {
       updatedItem.quantity -= quantityToRemove;
     }
   
     updatedBasketItems[index] = updatedItem;
-  
     setBasketItems(updatedBasketItems);
   };
+
   const addQuantity = (index, amount) => {
     const updatedBasket = [...basketItems];
     updatedBasket[index].quantity += amount;
@@ -56,7 +54,7 @@ const App = () => {
 
   const placeOrder = () => {
     const generatedTicketNumber = Math.floor(Math.random() * 1000000);
-    setGeneratedTicketNumber(generatedTicketNumber); // Set the generated ticket number
+    setGeneratedTicketNumber(generatedTicketNumber);
     console.log('Placing order:', basketItems);
     setBasketItems([]);
   };
@@ -72,23 +70,25 @@ const App = () => {
           <FontAwesomeIcon icon={faBars} />
         </button>
         <nav className={`navbar ${sidebarOpen ? 'open' : ''}`}>
-          <h2>Anre Foodshop</h2>
+          <h2>
+            <Link to="/" onClick={() => setSidebarOpen(false)} style={{ textDecoration: 'none' }}>Anre Foodshop</Link>
+          </h2>
           <h3>best since 1996</h3>
           <div className="separator"></div>
           <h3>Menu</h3>
           <ul>
             <li>
-              <Link to="/main-course">
+              <Link to="/main-course" style={{ textDecoration: 'none' }}>
                 <FontAwesomeIcon icon={faUtensils} /> Main Course
               </Link>
             </li>
             <li>
-              <Link to="/drink">
+              <Link to="/drink" style={{ textDecoration: 'none' }}>
                 <FontAwesomeIcon icon={faGlassWater} /> Drinks
               </Link>
             </li>
             <li>
-              <Link to="/dessert">
+              <Link to="/dessert" style={{ textDecoration: 'none' }}>
                 <FontAwesomeIcon icon={faCake} /> Dessert
               </Link>
             </li>
@@ -96,7 +96,7 @@ const App = () => {
           <h3>Order</h3>
           <ul>
             <li>
-              <Link to="/basket">
+              <Link to="/basket" style={{ textDecoration: 'none' }}>
                 <FontAwesomeIcon icon={faBasketShopping} /> Basket
               </Link>
             </li>
@@ -104,8 +104,7 @@ const App = () => {
         </nav>
         <div className="content">
           <Routes>
-            <Route path="/" element={<Navigate to="/homepage" />} />
-            <Route path="/homepage" element={<Homepage onOpenNavbar={openNavbar} />} />
+            <Route path="/" element={<Homepage onOpenNavbar={openNavbar} />} />
             <Route path="/main-course" element={<MainCourseSection addToBasket={addToBasket} />} />
             <Route path="/drink" element={<DrinkSection addToBasket={addToBasket} />} />
             <Route path="/dessert" element={<DessertSection addToBasket={addToBasket} />} />
